@@ -1,0 +1,112 @@
+@using Thoughts.Model
+@model List<ThoughtsModel>
+
+<style>
+    .card {
+        border: 2px solid #f57c00;
+        background-color: transparent;
+        color: #f57c00;
+        font-size: 2em;
+        font-weight: bold;
+        font-style: italic;
+        position: relative;
+        margin: 2em 0;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        
+    }
+
+    .titleThoughts {
+        word-break: break-all;
+    }
+
+    .conteineBtn {
+        @* padding: 1em; *@
+        display: flex;
+        gap: 2em;
+        margin-right: 1em;
+    }
+
+    .btnLink {
+        color: #f57c00
+    }
+    .conteineBtn a i{
+        color: #f57c00
+        transition: .3s;
+    }
+
+    .conteineBtn a i:hover {
+        color: white;
+        cursor: pointer;
+    }
+
+    .paragrafo {
+        text-align: center;
+        font-size: 2em;
+        color: #f57c00;
+        margin-top: 4em;
+    }
+
+    .conteine-filter-inner {
+        justify-content: center;
+    }
+            
+</style> 
+<div>
+    <div class="container my-4 conteine-filter">
+        <form method="get" class="row align-items-center g-3 conteine-filter-inner">
+            
+            <div class="col-md-4">
+                <input type="text" name="search" class="form-control" placeholder="Buscar..." value="@Context.Request.Query["search"]"/>
+            </div>
+
+            <div class="col-md-3">
+                <select name="options" class="form-select">
+                    <option value="">Ordenar por...</option>
+                    <option value="recentes" selected="@("recentes" == Context.Request.Query["options"])">Mais recentes</option>
+                    <option value="antigos" selected="@("antigos" == Context.Request.Query["options"])">Mais antigos</option>
+                    <option value="az" selected="@("az" == Context.Request.Query["options"])">A-Z</option>
+                    <option value="za" selected="@("za" == Context.Request.Query["options"])">Z-A</option>
+            </select>
+            </div>
+
+            <div class="col-md-2">
+                <button class="btn btn-primary w-100">Buscar</button>
+            </div>
+            <div class="col-md-2">
+                <button class="btn btn-primary w-100" type="button"><a asp-action="CreateThoughts" asp-controller="Deshboard" style="color: white; text-decoration: none;">Criar Thoughts</a></button>
+            </div>
+
+        </form>
+    </div>
+
+        <div class="cards"></div>
+            @if(Model != null && Model.Count() > 0) {
+                @foreach(var thought in Model) {
+                        <div class="card">
+                            <div class="card-body titleThoughts">
+                                @thought.Thought
+                            </div>
+                            <div class="conteineBtn">
+                                <a class="btnLink" asp-action="ReadThoughts" asp-controller="Deshboard" asp-route-id="@thought.Id">
+                                    <i class="bi bi-eye"></i>
+                                </a>
+                                <a class="btnLink" asp-action="EditThoughts" asp-controller="Deshboard" asp-route-id="@thought.Id">
+                                    <i class="bi bi-pencil"></i>
+                                </a>
+                                <a asp-action="DeleteThoughts" asp-controller="Deshboard" asp-route-id="@thought.Id" class="btnLink">
+                                    <i class="bi bi-trash"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                }
+
+            } else {
+                <p class="paragrafo">Não Existe Thoughts😢</p>
+            }
+        </div>
+</div>

@@ -1,0 +1,113 @@
+@using Thoughts.Dtos
+@using Thoughts.model
+@* @model CommentDto *@
+<style>
+    h1 {
+        color: #f57c00;
+    }
+    .conteineComment {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .cards {
+        margin-bottom: 15em;
+        
+    }
+    .card {
+        border: 2px solid #f57c00;
+        background-color: transparent;
+        color: #f57c00;
+        font-size: 2em;
+        font-weight: bold;
+        font-style: italic;
+        position: relative;
+        margin: 2em 0;
+        
+    }
+
+    .btn-disable {
+        display: none;
+    }
+
+    .interations {
+        position: absolute;
+        top: 80px;
+        display: flex;
+        gap: 1em;
+        font-size: .7em;
+    }
+
+    .paragrafo {
+        text-align: center;
+        font-size: 2em;
+        color: #f57c00;
+        margin-top: 4em;
+    }
+
+    .conteine-filter-inner {
+        justify-content: center;
+    }
+    .commentBox {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        background-color: #333;
+        align-items: center;
+        padding: 1em;
+        z-index: 1;
+        border-top: 1px solid #f57c00;
+    }
+    .bg-orange {
+      background-color: #f57c00;
+    }
+    .bg-dark-custom {
+      background-color: #333;
+    }
+</style>
+<div class="cards">
+    <span class="myThoughtsId" data-id="@Model.Id"></span>
+    <div class="card">
+        <div class="card-body">
+            @Model.Thought
+        </div>
+
+        @{
+            List<CommentModel> comments = ViewBag.Comment;
+            var commentsUser = comments.Where(c => c.ThoughtId == Model.Id).ToList();
+        }
+</div>
+<div class="container mt-5">
+    <div class="p-4 rounded bg-dark-custom text-white">
+      <h3 class="mb-4">Comentários</h3>
+      
+      @foreach(var comment in commentsUser) {
+            <div class="mb-3 p-3 rounded commentItens conteineComment">
+                <div>
+                    <h5 class="mb-1">@comment.Usuario</h5>
+                    <p class="mb-0">@comment.Comment</p>
+                </div> 
+            </div>
+        }
+
+    </div>
+</div>
+
+<script>
+
+    document.querySelectorAll(".commentItens").forEach((Comment, index) => {
+        const pos = index % 3;
+        if(pos == 0) {
+            Comment.classList.add("bg-orange")
+        } else if(pos == 1) {
+            Comment.classList.add("border-light");
+            Comment.classList.add("border");
+        } else if(pos == 2) {
+            Comment.style.backgroundColor = "White";
+            Comment.style.color = "#333";
+            Comment.classList.add("border");
+        }
+    })
+
+</script> 

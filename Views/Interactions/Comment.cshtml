@@ -1,0 +1,287 @@
+@using Thoughts.Dtos
+@using Thoughts.model
+@model CommentDto
+<style>
+    h1 {
+        color: #f57c00;
+    }
+    .conteineComment {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .cards {
+        margin-bottom: 15em;
+        
+    }
+    .card {
+        border: 2px solid #f57c00;
+        background-color: transparent;
+        color: #f57c00;
+        font-size: 2em;
+        font-weight: bold;
+        font-style: italic;
+        position: relative;
+        margin: 2em 0;
+        
+    }
+
+    .btn-disable {
+        display: none;
+    }
+
+    .interations {
+        position: absolute;
+        top: 100%;
+        display: flex;
+        cursor: pointer;
+        gap: 1em;
+        font-size: .7em;
+    }
+
+    .paragrafo {
+        text-align: center;
+        font-size: 2em;
+        color: #f57c00;
+        margin-top: 4em;
+    }
+
+    .conteine-filter-inner {
+        justify-content: center;
+    }
+    .commentBox {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        background-color: #333;
+        align-items: center;
+        padding: 1em;
+        z-index: 1;
+        border-top: 1px solid #f57c00;
+    }
+    .bg-orange {
+      background-color: #f57c00;
+    }
+    .bg-dark-custom {
+      background-color: #333;
+    }
+</style>
+<div class="cards">
+    <span class="myThoughtsId" data-id="@ViewBag.Thought.Id"></span>
+    <div class="card">
+        <div class="card-body">
+            @ViewBag.Thought.Thought
+        </div>
+
+        @{
+            List<LikeModel> likes = ViewBag.Likes;
+            List<SaveModel> save = ViewBag.Saves;
+            List<CommentModel> comments = ViewBag.Comment;
+            bool userLike = likes.Any(l => l.UserId == ViewBag.UserAuth.Id && l.ThoughtId == ViewBag.Thought.Id);
+            bool userSave = save.Any(s => s.UserId == ViewBag.UserAuth.Id && s.ThoughtId == ViewBag.Thought.Id);
+            var commentsUser = comments.Where(c => c.ThoughtId == ViewBag.Thought.Id).ToList();
+            
+            int LikesQty = likes.Where(l => l.ThoughtId == ViewBag.Thought.Id).ToList().Count();
+            int SaveQty = save.Where(s => s.ThoughtId == ViewBag.Thought.Id).ToList().Count();
+            int CommentQty = comments.Where(c => c.ThoughtId == ViewBag.Thought.Id).ToList().Count();
+        }
+
+        <div class="interations">
+            <div class="box-interations remove-like btn-like" data-id="@ViewBag.Thought.Id" style="display: @(userLike ? "flex" : "none");">
+                <i class="bi bi-heart-fill"></i>
+                <span class="RemoveLikeCout-@ViewBag.Thought.Id">Like @LikesQty</span>
+            </div>
+            <div class="box-interations like btn-like" data-id="@ViewBag.Thought.Id" style="display: @(!userLike ? "flex" : "none");">
+                <i class="bi bi-heart"></i>
+                <span class="LikeCout-@ViewBag.Thought.Id">Like @LikesQty</span>
+            </div>
+
+
+            <div class="box-interations comment" data-id="@ViewBag.Thought.Id">
+                <i class="bi bi-chat"></i>
+                <span>Comentarios @CommentQty</span>
+            </div>
+
+
+            <div class="box-interations save saveBtn" style="display: @(!userSave ? "flex" : "none");" data-id="@ViewBag.Thought.Id">
+                <i class="bi bi-bookmark"></i>
+                <span>Salva @SaveQty</span>
+            </div>
+            <div class="box-interations save removeSaveBtn" style="display: @(userSave ? "flex" : "none");" data-id="@ViewBag.Thought.Id">
+                <i class="bi bi-bookmark-fill"></i>
+                <span>Salva @SaveQty</span>
+            </div>
+        </div>
+    </div>
+
+<div class="container mt-5">
+    <div class="p-4 rounded bg-dark-custom text-white">
+      <h3 class="mb-4">Comentários</h3>
+      
+      @foreach(var comment in commentsUser) {
+            <div class="mb-3 p-3 rounded commentItens conteineComment">
+                <div>
+                    <h5 class="mb-1">@comment.Usuario</h5>
+                    <p class="mb-0">@comment.Comment</p>
+                </div>
+                @if(ViewBag.UserAuth.Id == comment.UserId) {
+
+                    <div class="dropdown menu-opcoes ">
+                        <button class="btn btn-sm btn-light" data-bs-toggle="dropdown" aria-expanded="false">
+                        &#x22EE; <!-- três pontinhos verticais -->
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li class="btnDeleta"><a href="#" data-id="@comment.Id" class="dropdown-item deletar">Deletar</a></li>
+                        </ul>
+                    </div>
+                }   
+            </div>
+        }
+
+    </div>
+  </div>
+</div>
+
+<form asp-action="Comment" asp-controller="Interactions" method="post" class="commentBox">
+    <div class="input-group mb-3">
+        <input type="text" class="form-control inputsText" placeholder="Comentar" aria-label="Recipient's username" aria-describedby="button-addon2" asp-for="Comment">
+        <button class="btn btn-outline-secondary btnComment" style="color: #f57c00; border-color: #f57c00;" type="submit" id="button-addon2">Comentar</button>
+    </div>
+</form>
+
+<script>
+    document.querySelectorAll(".btnDeleta").forEach(btn => {
+        btn.addEventListener("click", e => {
+            e.preventDefault();
+            const ThoughtId = document.querySelector(".myThoughtsId")
+            console.log(ThoughtId.dataset.id);
+            const commentId = e.target.dataset.id
+            console.log("e.target.dataset.id: ", e.target.dataset.id);
+            fetch(`/Interactions/DeletaComment/${commentId}`).then(e => {
+                window.location.href = e.url + `/${ThoughtId.dataset.id}`
+            }).catch(e => {
+                console.log(e);
+            })
+        })
+    })
+
+    document.querySelectorAll(".commentItens").forEach((Comment, index) => {
+        const pos = index % 3;
+        if(pos == 0) {
+            Comment.classList.add("bg-orange")
+        } else if(pos == 1) {
+            Comment.classList.add("border-light");
+            Comment.classList.add("border");
+        } else if(pos == 2) {
+            Comment.style.backgroundColor = "White";
+            Comment.style.color = "#333";
+            Comment.classList.add("border");
+        }
+    })
+
+    document.querySelectorAll(".save").forEach(btn => {
+        btn.addEventListener("click", e => {
+
+            const token = document.cookie.replace("AuthToken=", "");
+
+            if(e.currentTarget.classList.contains("saveBtn")) {
+                const id = e.currentTarget.dataset.id;
+                fetch(`/Interactions/Save/${id}`, {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                }).then(e => {
+                    toggleButtonSave(id, true)
+                    window.location.reload();
+                }).catch(e => {
+                    console.log(e);
+                })
+
+            } else if (e.currentTarget.classList.contains("removeSaveBtn")) {
+
+                    const id = e.currentTarget.dataset.id;
+                    fetch(`/Interactions/RemoveSave/${id}`, {
+                        headers: {
+                            Authorization: `Bearer ${token}`
+                        }
+                    }).then(e => {
+                        toggleButtonSave(id, false)
+                        window.location.reload();
+                    }).catch(e => {
+                        console.log(e);
+                    })
+            }
+
+        })
+    })
+
+    function toggleButtonSave(ThoughtId, userSave) {
+
+        const saveBtn = document.querySelector(`.saveBtn[data-id="${ThoughtId}"]`);
+        const removeSaveBtn = document.querySelector(`.removeSaveBtn[data-id="${ThoughtId}"]`);
+
+        if(userSave) {
+            saveBtn.style.display = "none";
+            removeSaveBtn.style.display = "flex";
+        } else {
+            saveBtn.style.display = "flex";
+            removeSaveBtn.style.display = "none";
+        }
+
+    }
+
+    document.querySelectorAll(".btn-like").forEach(btn => {
+        btn.addEventListener("click", e => {
+
+            const token = document.cookie.replace("AuthToken=", "");
+            if(e.currentTarget.classList.contains("like")) 
+            {
+                const id = e.currentTarget.dataset.id
+                const likeCunt = document.querySelector(`.LikeCout-${id}`)
+
+                fetch(`/Interactions/Like/${id}`, {
+                    headers: {Authorization: `Bearer ${token}`}
+                }).then(e => {
+                    toggleButton(id, true);
+                    window.location.reload();
+                })
+                .catch(e => {
+                    console.log(e);
+                })
+
+            } 
+            else if(e.currentTarget.classList.contains("remove-like")) 
+            {
+
+                const id = e.currentTarget.dataset.id;
+
+                fetch(`/Interactions/RemoveLike/${id}`, {
+                    headers: {Authorization: `Bearer ${token}`}
+                }).then(e => {
+                    toggleButton(id, false);
+                    window.location.reload();
+                })
+                .catch(e => {
+                    console.log(e);
+                })
+
+            } 
+
+        })
+    })
+
+    function toggleButton(ThoughtId, userLike) {
+        const likebtn = document.querySelector(`.like[data-id="${ThoughtId}"]`);
+        const removeLikeBtn = document.querySelector(`.remove-like[data-id="${ThoughtId}"]`);
+
+        if(userLike) {
+            likebtn.style.display = "none"
+            removeLikeBtn.style.display = "flex";
+        } else {
+            likebtn.style.display = "flex"
+            removeLikeBtn.style.display = "none";
+        }
+    }
+
+</script>

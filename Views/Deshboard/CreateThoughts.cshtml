@@ -1,0 +1,22 @@
+@using Thoughts.Dtos
+@model ThoughtsDtos
+<style>
+    .form {
+        @* width: 100%; *@
+    }
+    .conteineBtn {
+        margin: 1em auto;
+        width: 50%;
+    }
+</style>
+<h1 style="color: #f57c00; margin-bottom: 1em; text-align: center; font-weight: bold;">Crie Seu Thoughts</h1>
+
+<form asp-action="CreateThoughts" asp-controller="Deshboard" method="post" class="form">
+    <div class="mb-3"></div>
+        <textarea class="form-control" id="exampleFormControlTextarea1" style="height: 250px;" rows="3" placeholder="Digite Seu Pensamento" asp-for="Thought"></textarea>
+    </div>
+
+    <div class="d-grid">
+        <button class="btn btn-primary conteineBtn" style="background-color: #f57c00; border-color: #f57c00; font-weight: bold; font-size: 1.2em;" type="submit">Button</button>
+    </div>
+</form>

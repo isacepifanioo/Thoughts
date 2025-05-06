@@ -1,0 +1,232 @@
+@using Thoughts.Model
+@using Thoughts.model
+@model List<ThoughtsModel>
+@* @model List<LikeModel> *@
+
+@section Styles {
+    @Html.Raw(@"
+        <style>
+            h1 {
+                color: #f57c00;
+            }
+            .cards {
+                margin-bottom: 15em;
+                
+            }
+            .card {
+                border: 2px solid #f57c00;
+                background-color: transparent;
+                color: #f57c00;
+                font-size: 2em;
+                font-weight: bold;
+                font-style: italic;
+                position: relative;
+                margin: 2em 0;
+                
+            }
+
+            .btn-disable {
+                display: none;
+            }
+
+            .interations {
+                position: absolute;
+                top: 100%;
+                cursor: pointer;
+                display: flex;
+                gap: 1em;
+                font-size: .7em;
+            }
+
+            .paragrafo {
+                text-align: center;
+                font-size: 2em;
+                color: #f57c00;
+                margin-top: 4em;
+            }
+
+            .conteine-filter-inner {
+                justify-content: center;
+            }
+            @media (max-width: 768px) {
+                h1 {
+                    text-align: center;
+                    font-size: 5em;
+                }
+                .conteine-filter {
+                    border: none;
+                }
+            }
+        </style>
+    ")
+}
+
+<div>
+
+    <div class="cards">
+        <div class="cards">
+            @if(Model != null && Model.Count() > 0) {
+
+                @foreach(var thought in Model) {
+                    List<LikeModel> likes = ViewBag.Likes;
+                    List<SaveModel> save = ViewBag.Saves;
+                    bool userLike = likes.Any(l => l.UserId == ViewBag.UserAuth.Id && l.ThoughtId == thought.Id);
+                    bool userSave = save.Any(s => s.UserId == ViewBag.UserAuth.Id && s.ThoughtId == thought.Id);
+
+                        <div class="card">
+                            <div class="card-body">
+                                @thought.Thought
+                            </div>
+                            <div class="interations">                   
+                                <div class="box-interations remove-like btn-like" data-id="@thought.Id" style="display: @(userLike ? "flex" : "none");">
+                                    <i class="bi bi-heart-fill"></i>
+                                    <span>Like</span>
+                                </div>
+                                <div class="box-interations like btn-like" data-id="@thought.Id" style="display: @(!userLike ? "flex" : "none");">
+                                    <i class="bi bi-heart"></i>
+                                    <span>Like</span>
+                                </div>
+
+
+                                <div class="box-interations comment" data-id="@thought.Id">
+                                    <i class="bi bi-chat"></i>
+                                    <span>Comentarios</span>
+                                </div>
+
+
+                                <div class="box-interations save saveBtn" style="display: @(!userSave ? "flex" : "none");" data-id="@thought.Id">
+                                    <i class="bi bi-bookmark"></i>
+                                    <span>Salva</span>
+                                </div>
+                                <div class="box-interations save removeSaveBtn" style="display: @(userSave ? "flex" : "none");" data-id="@thought.Id">
+                                    <i class="bi bi-bookmark-fill"></i>
+                                    <span>Salva</span>
+                                </div>
+                            </div>
+                    </div>
+
+                }
+
+            } else {
+                <p class="paragrafo">Não Existe Thoughts😢</p>
+            }
+        </div>
+    </div>
+
+</div>
+
+
+<script>
+
+    document.querySelectorAll(".comment").forEach(btn => {
+        btn.addEventListener("click", e => {
+        const id = e.currentTarget.dataset.id;
+        const token = document.cookie.replace("AuthToken=", "");
+        fetch(`/Interactions/Comment/${id}`).then(e => {
+            window.location.href = e.url;
+        })
+    })
+    })
+
+    document.querySelectorAll(".save").forEach(btn => {
+        btn.addEventListener("click", e => {
+
+            const token = document.cookie.replace("AuthToken=", "");
+
+            if(e.currentTarget.classList.contains("saveBtn")) {
+                const id = e.currentTarget.dataset.id;
+                fetch(`/Interactions/Save/${id}`, {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                }).then(e => {
+                    toggleButtonSave(id, true)
+                }).catch(e => {
+                    console.log(e);
+                })
+
+            } else if (e.currentTarget.classList.contains("removeSaveBtn")) {
+
+                    const id = e.currentTarget.dataset.id;
+                    fetch(`/Interactions/RemoveSave/${id}`, {
+                        headers: {
+                            Authorization: `Bearer ${token}`
+                        }
+                    }).then(e => {
+                        toggleButtonSave(id, false)
+                    }).catch(e => {
+                        console.log(e);
+                    })
+            }
+
+        })
+    })
+
+    function toggleButtonSave(ThoughtId, userSave) {
+
+        const saveBtn = document.querySelector(`.saveBtn[data-id="${ThoughtId}"]`);
+        const removeSaveBtn = document.querySelector(`.removeSaveBtn[data-id="${ThoughtId}"]`);
+
+        if(userSave) {
+            saveBtn.style.display = "none";
+            removeSaveBtn.style.display = "flex";
+        } else {
+            saveBtn.style.display = "flex";
+            removeSaveBtn.style.display = "none";
+        }
+
+    }
+
+    document.querySelectorAll(".btn-like").forEach(btn => {
+        btn.addEventListener("click", e => {
+
+            const token = document.cookie.replace("AuthToken=", "");
+            if(e.currentTarget.classList.contains("like")) 
+            {
+                const id = e.currentTarget.dataset.id
+
+                fetch(`/Interactions/Like/${id}`, {
+                    headers: {Authorization: `Bearer ${token}`}
+                }).then(e => {
+                    toggleButton(id, true);
+                })
+                .catch(e => {
+                    console.log(e);
+                })
+
+                
+
+            } 
+            else if(e.currentTarget.classList.contains("remove-like")) 
+            {
+
+                const id = e.currentTarget.dataset.id;
+
+                fetch(`/Interactions/RemoveLike/${id}`, {
+                    headers: {Authorization: `Bearer ${token}`}
+                }).then(e => {
+                    toggleButton(id, false);
+                })
+                .catch(e => {
+                    console.log(e);
+                })
+
+            } 
+
+        })
+    })
+
+    function toggleButton(ThoughtId, userLike) {
+        const likebtn = document.querySelector(`.like[data-id="${ThoughtId}"]`);
+        const removeLikeBtn = document.querySelector(`.remove-like[data-id="${ThoughtId}"]`);
+
+        if(userLike) {
+            likebtn.style.display = "none"
+            removeLikeBtn.style.display = "flex";
+        } else {
+            likebtn.style.display = "flex"
+            removeLikeBtn.style.display = "none";
+        }
+    }
+
+</script>
