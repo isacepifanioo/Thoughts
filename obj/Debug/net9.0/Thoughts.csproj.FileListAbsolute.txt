@@ -18,7 +18,6 @@ C:\Users\isace\source\repos\Thoughts\obj\Debug\net9.0\scopedcss\Views\Shared\_La
 C:\Users\isace\source\repos\Thoughts\obj\Debug\net9.0\scopedcss\bundle\Thoughts.styles.css
 C:\Users\isace\source\repos\Thoughts\obj\Debug\net9.0\scopedcss\projectbundle\Thoughts.bundle.scp.css
 C:\Users\isace\source\repos\Thoughts\obj\Debug\net9.0\compressed\lk35vsdzg4-b9sayid5wm.gz
-C:\Users\isace\source\repos\Thoughts\obj\Debug\net9.0\compressed\u5wyqp9yrc-61n19gt1b8.gz
 C:\Users\isace\source\repos\Thoughts\obj\Debug\net9.0\compressed\frrqp0fhvm-xtxxf3hu2r.gz
 C:\Users\isace\source\repos\Thoughts\obj\Debug\net9.0\compressed\gcgref26hi-bqjiyaj88i.gz
 C:\Users\isace\source\repos\Thoughts\obj\Debug\net9.0\compressed\728uquprjv-c2jlpeoesf.gz
@@ -202,3 +201,5 @@ C:\Users\isace\source\repos\Thoughts\obj\Debug\net9.0\Thoughts.csproj.AssemblyRe
 C:\Users\isace\source\repos\Thoughts\obj\Debug\net9.0\Thoughts.csproj.Up2Date
 C:\Users\isace\source\repos\Thoughts\obj\Debug\net9.0\compressed\ptvhpfq2ne-lhggm1sm53.gz
 C:\Users\isace\source\repos\Thoughts\obj\Debug\net9.0\compressed\3t52x8300r-lhggm1sm53.gz
+C:\Users\isace\source\repos\Thoughts\obj\Debug\net9.0\Thoughts.sourcelink.json
+C:\Users\isace\source\repos\Thoughts\obj\Debug\net9.0\compressed\u5wyqp9yrc-a9d2wc5osf.gz

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "RxIImrLwan8EYz3V8ZmmwGwUoTYhHXS15kmR8FCwfEA=",
+  "Hash": "rVCUhSqlKfSbJM//pYnrpXdiQE3bhH0POmN4XEVD2E4=",
   "Source": "Thoughts",
   "BasePath": "_content/Thoughts",
   "Mode": "Default",
@@ -1172,12 +1172,12 @@
       "OriginalItemSpec": "C:\\Users\\isace\\source\\repos\\Thoughts\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js"
     },
     {
-      "Identity": "C:\\Users\\isace\\source\\repos\\Thoughts\\obj\\Debug\\net9.0\\compressed\\u5wyqp9yrc-61n19gt1b8.gz",
+      "Identity": "C:\\Users\\isace\\source\\repos\\Thoughts\\obj\\Debug\\net9.0\\compressed\\u5wyqp9yrc-a9d2wc5osf.gz",
       "SourceId": "Thoughts",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\isace\\source\\repos\\Thoughts\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "_content/Thoughts",
-      "RelativePath": "favicon#[.{fingerprint=61n19gt1b8}]?.ico.gz",
+      "RelativePath": "favicon#[.{fingerprint=a9d2wc5osf}]?.ico.gz",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -1186,8 +1186,8 @@
       "RelatedAsset": "C:\\Users\\isace\\source\\repos\\Thoughts\\wwwroot\\favicon.ico",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "nezsohjtde",
-      "Integrity": "wfFuuYm+Lh6RbCeeiUqxw334b/hIOkp5j9eokGUM1Y0=",
+      "Fingerprint": "p5lrac3290",
+      "Integrity": "I7J5MMGwZjawrqAD/jO+xx5pQxbjentv8385CFxHJcA=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\isace\\source\\repos\\Thoughts\\wwwroot\\favicon.ico"
@@ -1438,8 +1438,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "61n19gt1b8",
-      "Integrity": "Jtxf9L+5ITKRc1gIRl4VbUpGkRNfOBXjYTdhJD4facM=",
+      "Fingerprint": "a9d2wc5osf",
+      "Integrity": "YjAh6PAhqSX0xKtFv33GIqmBQxCMRx2aRc+YtA+ksms=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
@@ -3026,13 +3026,13 @@
       ]
     },
     {
-      "Route": "favicon.61n19gt1b8.ico",
-      "AssetFile": "C:\\Users\\isace\\source\\repos\\Thoughts\\obj\\Debug\\net9.0\\compressed\\u5wyqp9yrc-61n19gt1b8.gz",
+      "Route": "favicon.a9d2wc5osf.ico",
+      "AssetFile": "C:\\Users\\isace\\source\\repos\\Thoughts\\obj\\Debug\\net9.0\\compressed\\u5wyqp9yrc-a9d2wc5osf.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000405022276"
+          "Quality": "0.000267308206"
         }
       ],
       "ResponseHeaders": [
@@ -3042,15 +3042,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2468"
+          "Value": "3740"
         },
         {
           "Name": "ETag",
-          "Value": "\"wfFuuYm+Lh6RbCeeiUqxw334b/hIOkp5j9eokGUM1Y0=\""
+          "Value": "\"I7J5MMGwZjawrqAD/jO+xx5pQxbjentv8385CFxHJcA=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 28 Apr 2025 21:16:21 GMT"
+          "Value": "Tue, 06 May 2025 20:12:04 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3070,13 +3070,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"Jtxf9L+5ITKRc1gIRl4VbUpGkRNfOBXjYTdhJD4facM=\""
+          "Value": "W/\"YjAh6PAhqSX0xKtFv33GIqmBQxCMRx2aRc+YtA+ksms=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "61n19gt1b8"
+          "Value": "a9d2wc5osf"
         },
         {
           "Name": "label",
@@ -3084,12 +3084,12 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-Jtxf9L+5ITKRc1gIRl4VbUpGkRNfOBXjYTdhJD4facM="
+          "Value": "sha256-YjAh6PAhqSX0xKtFv33GIqmBQxCMRx2aRc+YtA+ksms="
         }
       ]
     },
     {
-      "Route": "favicon.61n19gt1b8.ico",
+      "Route": "favicon.a9d2wc5osf.ico",
       "AssetFile": "C:\\Users\\isace\\source\\repos\\Thoughts\\wwwroot\\favicon.ico",
       "Selectors": [],
       "ResponseHeaders": [
@@ -3099,7 +3099,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "5430"
+          "Value": "15406"
         },
         {
           "Name": "Content-Type",
@@ -3107,11 +3107,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"Jtxf9L+5ITKRc1gIRl4VbUpGkRNfOBXjYTdhJD4facM=\""
+          "Value": "\"YjAh6PAhqSX0xKtFv33GIqmBQxCMRx2aRc+YtA+ksms=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 28 Apr 2025 21:16:21 GMT"
+          "Value": "Tue, 06 May 2025 20:12:04 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3121,7 +3121,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "61n19gt1b8"
+          "Value": "a9d2wc5osf"
         },
         {
           "Name": "label",
@@ -3129,13 +3129,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-Jtxf9L+5ITKRc1gIRl4VbUpGkRNfOBXjYTdhJD4facM="
+          "Value": "sha256-YjAh6PAhqSX0xKtFv33GIqmBQxCMRx2aRc+YtA+ksms="
         }
       ]
     },
     {
-      "Route": "favicon.61n19gt1b8.ico.gz",
-      "AssetFile": "C:\\Users\\isace\\source\\repos\\Thoughts\\obj\\Debug\\net9.0\\compressed\\u5wyqp9yrc-61n19gt1b8.gz",
+      "Route": "favicon.a9d2wc5osf.ico.gz",
+      "AssetFile": "C:\\Users\\isace\\source\\repos\\Thoughts\\obj\\Debug\\net9.0\\compressed\\u5wyqp9yrc-a9d2wc5osf.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3144,7 +3144,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2468"
+          "Value": "3740"
         },
         {
           "Name": "Content-Type",
@@ -3152,11 +3152,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"wfFuuYm+Lh6RbCeeiUqxw334b/hIOkp5j9eokGUM1Y0=\""
+          "Value": "\"I7J5MMGwZjawrqAD/jO+xx5pQxbjentv8385CFxHJcA=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 28 Apr 2025 21:16:21 GMT"
+          "Value": "Tue, 06 May 2025 20:12:04 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3174,7 +3174,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "61n19gt1b8"
+          "Value": "a9d2wc5osf"
         },
         {
           "Name": "label",
@@ -3182,18 +3182,18 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-wfFuuYm+Lh6RbCeeiUqxw334b/hIOkp5j9eokGUM1Y0="
+          "Value": "sha256-I7J5MMGwZjawrqAD/jO+xx5pQxbjentv8385CFxHJcA="
         }
       ]
     },
     {
       "Route": "favicon.ico",
-      "AssetFile": "C:\\Users\\isace\\source\\repos\\Thoughts\\obj\\Debug\\net9.0\\compressed\\u5wyqp9yrc-61n19gt1b8.gz",
+      "AssetFile": "C:\\Users\\isace\\source\\repos\\Thoughts\\obj\\Debug\\net9.0\\compressed\\u5wyqp9yrc-a9d2wc5osf.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000405022276"
+          "Quality": "0.000267308206"
         }
       ],
       "ResponseHeaders": [
@@ -3203,15 +3203,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2468"
+          "Value": "3740"
         },
         {
           "Name": "ETag",
-          "Value": "\"wfFuuYm+Lh6RbCeeiUqxw334b/hIOkp5j9eokGUM1Y0=\""
+          "Value": "\"I7J5MMGwZjawrqAD/jO+xx5pQxbjentv8385CFxHJcA=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 28 Apr 2025 21:16:21 GMT"
+          "Value": "Tue, 06 May 2025 20:12:04 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3231,13 +3231,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"Jtxf9L+5ITKRc1gIRl4VbUpGkRNfOBXjYTdhJD4facM=\""
+          "Value": "W/\"YjAh6PAhqSX0xKtFv33GIqmBQxCMRx2aRc+YtA+ksms=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-Jtxf9L+5ITKRc1gIRl4VbUpGkRNfOBXjYTdhJD4facM="
+          "Value": "sha256-YjAh6PAhqSX0xKtFv33GIqmBQxCMRx2aRc+YtA+ksms="
         }
       ]
     },
@@ -3252,7 +3252,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "5430"
+          "Value": "15406"
         },
         {
           "Name": "Content-Type",
@@ -3260,11 +3260,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"Jtxf9L+5ITKRc1gIRl4VbUpGkRNfOBXjYTdhJD4facM=\""
+          "Value": "\"YjAh6PAhqSX0xKtFv33GIqmBQxCMRx2aRc+YtA+ksms=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 28 Apr 2025 21:16:21 GMT"
+          "Value": "Tue, 06 May 2025 20:12:04 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3274,13 +3274,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-Jtxf9L+5ITKRc1gIRl4VbUpGkRNfOBXjYTdhJD4facM="
+          "Value": "sha256-YjAh6PAhqSX0xKtFv33GIqmBQxCMRx2aRc+YtA+ksms="
         }
       ]
     },
     {
       "Route": "favicon.ico.gz",
-      "AssetFile": "C:\\Users\\isace\\source\\repos\\Thoughts\\obj\\Debug\\net9.0\\compressed\\u5wyqp9yrc-61n19gt1b8.gz",
+      "AssetFile": "C:\\Users\\isace\\source\\repos\\Thoughts\\obj\\Debug\\net9.0\\compressed\\u5wyqp9yrc-a9d2wc5osf.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3289,7 +3289,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2468"
+          "Value": "3740"
         },
         {
           "Name": "Content-Type",
@@ -3297,11 +3297,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"wfFuuYm+Lh6RbCeeiUqxw334b/hIOkp5j9eokGUM1Y0=\""
+          "Value": "\"I7J5MMGwZjawrqAD/jO+xx5pQxbjentv8385CFxHJcA=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 28 Apr 2025 21:16:21 GMT"
+          "Value": "Tue, 06 May 2025 20:12:04 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3319,7 +3319,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-wfFuuYm+Lh6RbCeeiUqxw334b/hIOkp5j9eokGUM1Y0="
+          "Value": "sha256-I7J5MMGwZjawrqAD/jO+xx5pQxbjentv8385CFxHJcA="
         }
       ]
     },
