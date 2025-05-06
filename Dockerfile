@@ -6,17 +6,17 @@ EXPOSE 80
 # Adicione a imagem SDK para build
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
-COPY ["SeuProjeto/SeuProjeto.csproj", "SeuProjeto/"]
-RUN dotnet restore "SeuProjeto/SeuProjeto.csproj"
+COPY ["Thoughts.csproj", "/app/"]
+RUN dotnet restore "Thoughts.csproj"
 COPY . .
-WORKDIR "/src/SeuProjeto"
-RUN dotnet build "SeuProjeto.csproj" -c Release -o /app/build
+WORKDIR "/src"
+RUN dotnet build "Thoughts.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "SeuProjeto.csproj" -c Release -o /app/publish
+RUN dotnet publish "Thoughts.csproj" -c Release -o /app/publish
 
 # Copie o build e publique a aplicação
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "SeuProjeto.dll"]
+ENTRYPOINT ["dotnet", "Thoughts.dll"]
