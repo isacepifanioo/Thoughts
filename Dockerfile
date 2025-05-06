@@ -1,7 +1,7 @@
 # Use a imagem oficial do .NET SDK
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 WORKDIR /app
-EXPOSE 8080  # Alterar para a porta 8080
+EXPOSE 8080 
 
 # Adicione a imagem SDK para build
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
