@@ -11,10 +11,10 @@ using Thoughts.services.thought.thought;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// builder.WebHost.ConfigureKestrel(options =>
-// {
-//     options.Listen(IPAddress.Any, 8080); // Porta 8080
-// });
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.Listen(IPAddress.Any, 8080); // Porta 8080
+});
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
