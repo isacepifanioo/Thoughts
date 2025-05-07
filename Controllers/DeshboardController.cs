@@ -23,7 +23,7 @@ namespace Thoughts.Controllers {
             var thought = resposta.Dados!.AsQueryable();
 
             if(!string.IsNullOrEmpty(search)) {
-                thought = thought.Where(t => t.Thought.Contains(search));
+                thought = thought.Where(t => t.Thought.ToLower().Contains(search.ToLower()));
             }
             
             switch(options) {

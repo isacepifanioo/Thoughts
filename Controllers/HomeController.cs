@@ -30,13 +30,10 @@ namespace Thoughts.Controllers {
             ViewBag.Saves = saves;
             ViewBag.UserAuth = userAuth;
             ViewBag.Likes = likes;
-
-            System.Console.WriteLine(search);
-
             var thought = resposta.Dados!.AsQueryable();
 
             if(!string.IsNullOrEmpty(search)) {
-                thought = thought.Where(e => e.Thought.Contains(search));
+                thought = thought.Where(e => e.Thought.ToLower().Contains(search.ToLower()));
             }
 
             var listThoughts = thought.ToList();
