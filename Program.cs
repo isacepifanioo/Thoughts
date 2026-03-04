@@ -21,11 +21,6 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddHttpContextAccessor();
 
-// builder.Services.AddDbContext<AppDbContext>(options => {
-//     options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"), 
-//         new MySqlServerVersion(new Version(8, 0, 40)));
-// });
-
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
     options.UseNpgsql(
@@ -50,7 +45,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidIssuer = builder.Configuration["Jwt:Issuer"],
             ValidAudience = builder.Configuration["Jwt:Audience"],
             IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(
-                builder.Configuration["DefaultToken:Token"]!))
+                builder.Configuration["DefaultToken"]!))
         };
     });
 
