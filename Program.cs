@@ -32,7 +32,6 @@ builder.Services.AddScoped<ISenhaInterface, SenhaServices>();
 builder.Services.AddScoped<IAuthInterface, AuthServices>();
 builder.Services.AddScoped<IThoughtsInterface, ThoughtsServices>();
 builder.Services.AddScoped<IInteractionsInterface, InteractionsServices>();
-
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
@@ -45,7 +44,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidIssuer = builder.Configuration["Jwt:Issuer"],
             ValidAudience = builder.Configuration["Jwt:Audience"],
             IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(
-                builder.Configuration["DefaultToken"]!))
+                builder.Configuration["DefaultToken:Token"]!))
         };
     });
 
