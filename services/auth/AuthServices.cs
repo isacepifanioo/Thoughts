@@ -41,6 +41,7 @@ namespace Thoughts.services {
                     Email = User.Email,
                     SenhaHash = senhaHash,
                     SenhaSalt = senhaSalt,
+                    Created_at = DateTime.UtcNow,
                 };
 
                 _context.Usuario.Add(usuario);

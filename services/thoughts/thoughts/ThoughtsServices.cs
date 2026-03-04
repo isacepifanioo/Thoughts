@@ -47,7 +47,8 @@ namespace Thoughts.services.thought.thought {
                 var createThoughts = new ThoughtsModel(){
                     Thought = thoughts.Thought,
                     Usuario = usuario.Usuario,
-                    UserId = usuario.Id
+                    UserId = usuario.Id,
+                    Created_at = DateTime.UtcNow,
                 };
 
                 _context.Thoughts.Add(createThoughts);
