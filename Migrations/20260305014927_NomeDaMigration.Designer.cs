@@ -12,8 +12,8 @@ using Thoughts.Data;
 namespace Thoughts.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260304213728_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20260305014927_NomeDaMigration")]
+    partial class NomeDaMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

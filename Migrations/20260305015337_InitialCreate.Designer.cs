@@ -12,8 +12,8 @@ using Thoughts.Data;
 namespace Thoughts.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260304193038_InitialPostgres")]
-    partial class InitialPostgres
+    [Migration("20260305015337_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
