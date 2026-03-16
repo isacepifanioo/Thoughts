@@ -1,3 +1,6 @@
+# Thoughts App
+**Live Application:** https://thoughts-9ek2.onrender.com/
+
 ## Cadastro
 ![cadastro](./images/cadastro.png)
 ## Login
